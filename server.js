@@ -12,7 +12,7 @@ app.use(expressLayouts) // tell the app to use the express layouts module
 app.use(express.static('public')) // setting up the public documents folder (public views).
 
 const mongoose = require('mongoose')
-mongoose.connect (process.env.MONGODB_URI, {
+mongoose.connect ('process.env.MONGODB_URI', {
     useNewUrlParser: true,
     UseUnifiedTopology: true
 })
