@@ -9,6 +9,8 @@
 <body>
     Before
     <br>
+    <%- include('../partials/header.ejs') %> 
+    <%- include('../partials/errorMessage.ejs') %>
     <%- body %> <!--setting up an ejs insert point, anything we have in our index ejs file will be rendere here in this body section, by doing this we don't need to have multiple files with all of the HTML boilerplate code-->
     <br>
     After
