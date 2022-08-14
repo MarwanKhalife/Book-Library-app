@@ -3,6 +3,7 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const indexRouter = require('./routes/index') // linking the routes index file to the server js file in order for it to be used to generate the responses.
 const authorRouter = require('./routes/authors') // linking the route to the authors views foldder
+const bookRouter = require('./routes/books')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 
@@ -26,6 +27,7 @@ db.once('open', () => console.log('Connected to MongoDB Mongoose'))
 
 app.use('/', indexRouter) // using the indexrouter as our route to our root directory
 app.use('/authors', authorRouter) // setting up the route to the authors views folder. this means that all of the links here will be prepended with authors/
+app.use('/books', bookRouter)
 
 
 const PORT = process.env.PORT || 3000

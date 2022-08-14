@@ -7,12 +7,12 @@ const Author = require('../models/author')
 // Setting up the routes for the all authors page
 // Also server.js needs to be setup to look inside this routes index file to get the required response for each route the user visits in the browser
 router.get('/', async (req, res) => {
-    let searchOptions = {}
-    if (req.query.name != null && req.query.name !== '') {
+    let searchOptions = {} // seach functionality
+    if (req.query.name != null && req.query.name !== '') { // checking the input
         searchOptions.name = new RegExp(req.query.name, 'i')
     }
     try {
-        const authors = await Author.find({searchOptions})
+        const authors = await Author.find(searchOptions)
         res.render('authors/index', { 
             authors: authors, 
             searchOptions:  req.query })
