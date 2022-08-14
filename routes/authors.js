@@ -1,7 +1,7 @@
 const express = require('express') // adding express module
-const author = require('../models/author')
-const router = express.Router() // initializing the express router module by calling it here
 const Author = require('../models/author')
+const router = express.Router() // initializing the express router module by calling it here
+const Book = require('../models/book')
 
 
 // Setting up the routes for the all authors page

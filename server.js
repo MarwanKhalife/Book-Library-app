@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({limit: '2mb', extended: false})) // allows us to 
 const mongoose = require('mongoose')
 mongoose.connect (process.env.MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
 })
 const db = mongoose.connection
 db.on('error', error => console.error(error))

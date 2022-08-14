@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const coverImageBasePath = 'uploads/bookCovers'
 
 const bookSchema = new mongoose.Schema({
     title: {
@@ -22,7 +21,11 @@ const bookSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     },
-    coverImageName: {
+    coverImage: {
+        type: Buffer,
+        required: true
+    },
+    coverImageType: {
         type: String,
         required: true
     },
@@ -33,12 +36,11 @@ const bookSchema = new mongoose.Schema({
     }
 })
 
+// create virtual property for image path to be displayd using our books index ejs
 bookSchema.virtual('coverImagePath').get(function() {
-    if (this.coverImageName != null) {
-        return path.join('/', coverImageBasePath, this.coverImageName)
+    if (this.coverImage != null && this.coverImageType != null) {
+        return `data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`
     }
 })
 
-module.exports = mongoose.model('book', bookSchema) // exporting the schema model with name author and providing the const schemaname created here as the actual input.
-
-module.exports.coverImageBasePath = coverImageBasePath // export as Named Variable
+module.exports = mongoose.model('Book', bookSchema) // exporting the schema model with name author and providing the const schemaname created here as the actual input.
