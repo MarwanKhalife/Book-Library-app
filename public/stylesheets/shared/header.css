@@ -36,6 +36,11 @@
   padding: 1rem;
 }
 
-.header-nav li a:hover, .header-title:hover {
+.header-nav li a:hover {
+  color: white;
+  font-weight: 400;
+}
+
+.header-title:hover {
   color: white;
 }
