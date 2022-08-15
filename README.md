@@ -1,4 +1,4 @@
-# Book library Web-App using Node, Express, Mongo Atlas, FilePond.
+# Book library Web-App using Node, Express, EJS, Mongo Atlas, FilePond.
 
 App live on Heroku: https://booklibrary-webapp.herokuapp.com
 
