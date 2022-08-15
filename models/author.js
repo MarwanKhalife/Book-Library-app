@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Book = require('./book')
 
+
+// Author schema setup
 const authorSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -8,6 +10,8 @@ const authorSchema = new mongoose.Schema({
   }
 })
 
+
+// checking if an author still has books assigned before removing the author from the DB.
 authorSchema.pre('remove', function(next) {
   Book.find({ author: this.id }, (err, books) => {
     if (err) {

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+// Books schema setup
 const bookSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -36,6 +37,8 @@ const bookSchema = new mongoose.Schema({
   }
 })
 
+
+// Setting up a virtual path to the image file converted to a Base64 value in order for it to be stored in our MongoDB.
 bookSchema.virtual('coverImagePath').get(function() {
   if (this.coverImage != null && this.coverImageType != null) {
     return `data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`

@@ -4,7 +4,7 @@ const Book = require('../models/book')
 const Author = require('../models/author')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
-// All Books Route
+// All Books page Route
 router.get('/', async (req, res) => {
   let query = Book.find()
   if (req.query.title != null && req.query.title != '') {
@@ -27,12 +27,12 @@ router.get('/', async (req, res) => {
   }
 })
 
-// New Book Route
+// New Book page Route
 router.get('/new', async (req, res) => {
   renderNewPage(res, new Book())
 })
 
-// Create Book Route
+// Create Book page Route
 router.post('/', async (req, res) => {
   const book = new Book({
     title: req.body.title,
@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-// Show Book Route
+// Show All Books Route
 router.get('/:id', async (req, res) => {
   try {
     const book = await Book.findById(req.params.id)
@@ -63,7 +63,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-// Edit Book Route
+// Edit Book Page Route
 router.get('/:id/edit', async (req, res) => {
   try {
     const book = await Book.findById(req.params.id)
@@ -73,7 +73,7 @@ router.get('/:id/edit', async (req, res) => {
   }
 })
 
-// Update Book Route
+// Update Book Page Route
 router.put('/:id', async (req, res) => {
   let book
 
@@ -98,7 +98,7 @@ router.put('/:id', async (req, res) => {
   }
 })
 
-// Delete Book Page
+// Delete Book Page Page
 router.delete('/:id', async (req, res) => {
   let book
   try {
